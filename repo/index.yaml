@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  homeassistant:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-04-15T14:33:12.970232158-06:00"
+    description: A Helm chart for Kubernetes
+    digest: d8842756ee22a53e9953275e71eb3fc8d445b081d86d81b99a039c0304dad683
+    name: homeassistant
+    type: application
+    urls:
+    - homeassistant-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-04-15T14:33:12.969856888-06:00"
