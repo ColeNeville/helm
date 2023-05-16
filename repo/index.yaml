@@ -3,7 +3,17 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: 15.3-alpine
-    created: "2023-05-15T19:59:08.096673199-06:00"
+    created: "2023-05-15T20:01:11.726212078-06:00"
+    description: A Helm chart for Kubernetes
+    digest: 1343cbdd15b22c70f080745ee6152319a65c5fb444254ac67aead5278e5e2bea
+    name: postgresql
+    type: application
+    urls:
+    - postgresql-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 15.3-alpine
+    created: "2023-05-15T20:01:11.726012492-06:00"
     description: A Helm chart for Kubernetes
     digest: 7e908cb64f72816ecb477624c85d16b1091094368eb519558f0f6213e6e9bd1f
     name: postgresql
@@ -11,4 +21,4 @@ entries:
     urls:
     - postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-15T19:59:08.096405944-06:00"
+generated: "2023-05-15T20:01:11.725732811-06:00"
