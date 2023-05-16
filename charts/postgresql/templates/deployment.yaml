@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "postgresql.fullname" . }}
+  name: {{ include "chart.fullname" . }}
   labels:
-    {{- include "postgresql.labels" . | nindent 4 }}
+    {{- include "chart.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      {{- include "postgresql.selectorLabels" . | nindent 6 }}
+      {{- include "chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -15,9 +15,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "postgresql.selectorLabels" . | nindent 8 }}
+        {{- include "chart.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "postgresql.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
