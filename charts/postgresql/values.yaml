@@ -13,6 +13,10 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+service:
+  type: "LoadBalancer"
+  port: 5432
+
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -26,7 +30,3 @@ tolerations: []
 affinity: {}
 
 resources: {}
-
-service:
-  type: "LoadBalancer"
-  port: 5432
