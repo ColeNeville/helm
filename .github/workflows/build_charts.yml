@@ -3,17 +3,20 @@ name: Build Helm Charts
 on:
   push:
     branches:
-      - main
+      - "main"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  release:
     permissions:
       contents: write
 
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
@@ -26,6 +29,6 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         with:
-          charts_dir: build
+          charts_dir: charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
