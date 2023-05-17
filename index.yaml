@@ -1,0 +1,43 @@
+apiVersion: v1
+entries:
+  homeassistant:
+  - apiVersion: v2
+    appVersion: "2023.5"
+    created: "2023-05-17T00:24:28.499888664Z"
+    dependencies:
+    - name: postgresql
+      repository: file://../postgresql
+      version: "1"
+    - name: mosquitto
+      repository: file://../mosquitto
+      version: "1"
+    description: A homeassistant helm chart for personal use
+    digest: 14c56cdd475882468a6db21ff5d341d20ddad500ca471616d9e23a71a8d57159
+    name: homeassistant
+    type: application
+    urls:
+    - https://github.com/ColeNeville/helm/releases/download/homeassistant-1.0.0/homeassistant-1.0.0.tgz
+    version: 1.0.0
+  mosquitto:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-05-17T00:24:28.626717884Z"
+    description: A mosquitto helm chart for personal use
+    digest: 3ec942a6c769f78ba2ff3cc9710782ef941057289cfc3efee9fa44279837632b
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/ColeNeville/helm/releases/download/mosquitto-1.0.0/mosquitto-1.0.0.tgz
+    version: 1.0.0
+  postgresql:
+  - apiVersion: v2
+    appVersion: 15.3-alpine
+    created: "2023-05-17T00:24:28.745623015Z"
+    description: A postgresql helm chart for personal use
+    digest: ee258c12948a718e022714041d1c31e9de462e1bd56ec600b50892731780ee4e
+    name: postgresql
+    type: application
+    urls:
+    - https://github.com/ColeNeville/helm/releases/download/postgresql-1.0.0/postgresql-1.0.0.tgz
+    version: 1.0.0
+generated: "2023-05-17T00:24:28.745627615Z"
