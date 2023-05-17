@@ -30,5 +30,4 @@ spec:
               value: {{ .Values.postgres.password | required "Value postgres.password is required." }}
             - name: POSTGRES_DB
               value: {{ .Values.postgres.database }}
-          resources:
-            {{- toYaml .Values.pods.postgres.resources | nindent 12 -}}
+          resources: {{ toYaml .Values.pods.postgres.resources | nindent 12 }}

@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "chart.fullname" . }}-config
+  name: {{ include "chart.basename" . }}
   labels: {{ include "chart.labels" . | nindent 4 }}
 spec:
   resources:
-    requests:
-      {{ toYaml .Values.volumes.config.requests | nindent 6 }}
+    requests: {{ toYaml .Values.volumes.config.requests | nindent 6 }}
   accessModes:
     - ReadWriteOnce
+  {{ if .Values.volumes.config.storageClass }}
+  storageClassName: {{ .Values.volumes.config.storageClass }}
+  {{ end }}
