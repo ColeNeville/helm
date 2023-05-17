@@ -30,4 +30,4 @@ dependencies:
 
   - name: mosquitto
     version: "1"
-    repository: file://../mosquittto
+    repository: file://../mosquitto
