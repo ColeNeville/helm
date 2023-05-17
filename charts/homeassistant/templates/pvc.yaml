@@ -11,9 +11,9 @@ spec:
   {{- if and .Values.volumeClaim.volumeName .Values.volumeClaim.storageClassName -}}
   {{ fail "Only one of .Values.volume.volumeName or .Values.volume.storageClassName can be set" }}
   {{- end -}}
-  {{- if .Values.volumeClaim.volumeName -}}
+  {{- if .Values.volumeClaim.volumeName}}
   volumeName: {{ .Values.volumeClaim.volumeName}}
-  {{- end -}}
-  {{- if .Values.volumeClaim.storageClassName -}}
+  {{- end}}
+  {{- if .Values.volumeClaim.storageClassName}}
   storageClassName: {{ .Values.volumeClaim.storageClassName }}
-  {{- end -}}
+  {{- end}}

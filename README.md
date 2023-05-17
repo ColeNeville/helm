@@ -1,4 +1,4 @@
-# helm-charts
+# Cole Neville's Helm Repository
 
 ## Adding the Repository
 
