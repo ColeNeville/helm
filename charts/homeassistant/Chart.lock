@@ -1,9 +1,6 @@
 dependencies:
 - name: postgresql
   repository: https://coleneville.github.io/helm
-  version: 1.0.0
-- name: mosquitto
-  repository: https://coleneville.github.io/helm
-  version: 1.0.0
-digest: sha256:d86e983a3a4387478703fb4d3df49c8cb9393946314e2f8bedb9e39eafe4ddf6
-generated: "2023-05-16T18:28:12.732001207-06:00"
+  version: 1.1.0
+digest: sha256:04d45048fd311543f13a354f3a97a03cddac3ac60798613071e803d58e85caa0
+generated: "2023-05-16T20:26:53.615073309-06:00"
