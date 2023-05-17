@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "chart.fullname" . }}
+  name: {{ include "chart.basename" . }}
   labels: {{ include "chart.labels" . | nindent 4 }}
 spec:
   selector:
@@ -10,8 +10,12 @@ spec:
     metadata:
       labels: {{ include "deployment.selectorLabels" . | nindent 8 }}
     spec:
+      volumes:
+        - name: homeassistant
+          persistentVolumeClaim:
+            claimName: {{ include "chart.basename" . }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: homeassistant
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -26,4 +30,8 @@ spec:
             httpGet:
               path: /
               port: http
+          volumes:
+            - mountPath: /config
+              name: homeassistant
+              subPath: config
           resources: {{ toYaml .Values.pods.homeassistant.resources | nindent 12 }}

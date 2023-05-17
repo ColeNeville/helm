@@ -29,6 +29,11 @@ ingress:
 volumes:
   config:
     requests:
-      storage: 5Gi
+      storage: 2.5Gi
     storageClass: ""
 
+
+postgresql:
+  postgres:
+    user: homeassistant
+    database: homeassistant

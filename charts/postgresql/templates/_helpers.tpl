@@ -7,11 +7,18 @@
 # Create a default fully qualified app name.
 # We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 # If release name contains chart name it will be used as a full name.
-{{- define "chart.fullname" -}}
+{{- define "chart.basename" -}}
 {{- if contains .Chart.Name .Release.Name -}}
 {{ .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- end -}}
+{{- else -}}
 {{ printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" }}
+{{- end -}}
+{{- end -}}
+
+
+# Alias for basename
+{{- define "chart.fullname" -}}
+{{ include "chart.basename" . }}
 {{- end -}}
 
 
@@ -24,7 +31,7 @@
 # Selector labels
 {{- define "deployment.selectorLabels" -}}
 app.kubernetes.io/name: {{ .Chart.Name }}
-app.kubernetes.io/instance: {{ printf "%s-%s" .Release.Name "postgres" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 
@@ -32,7 +39,7 @@ app.kubernetes.io/instance: {{ printf "%s-%s" .Release.Name "postgres" }}
 {{- define "chart.labels" -}}
 helm.sh/chart: {{ include "chart.label" . }}
 helm.sh/release: {{ .Release.Name }}
-app.kubernetes.io/component: database
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+# app.kubernetes.io/component: database
+# app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service | lower }}
 {{- end -}}
