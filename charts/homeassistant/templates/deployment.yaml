@@ -22,7 +22,7 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          volumes:
+          volumeMounts:
             - mountPath: /config
               name: homeassistant
               subPath: config
