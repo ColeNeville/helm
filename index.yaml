@@ -3,6 +3,20 @@ entries:
   homeassistant:
   - apiVersion: v2
     appVersion: latest
+    created: "2023-05-18T01:30:14.080438274Z"
+    dependencies:
+    - name: postgresql
+      repository: file://../postgresql
+      version: "1.2"
+    description: Homeassistant helmchart for Kubernetes
+    digest: 5775fd9d52eb91cb07f4c86f35633820818bfab9b24656b0a1ab75ab8a14e9c7
+    name: homeassistant
+    type: application
+    urls:
+    - https://github.com/ColeNeville/helm/releases/download/homeassistant-1.4.2/homeassistant-1.4.2.tgz
+    version: 1.4.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-05-18T01:25:12.941088426Z"
     dependencies:
     - name: postgresql
@@ -195,4 +209,4 @@ entries:
     urls:
     - https://github.com/ColeNeville/helm/releases/download/postgresql-1.0.0/postgresql-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-18T01:29:05.416720439Z"
+generated: "2023-05-18T01:30:14.080599474Z"
