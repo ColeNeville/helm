@@ -13,7 +13,7 @@ spec:
       volumes:
         - name: homeassistant
           persistentVolumeClaim:
-            claimName: {{ include "chart.basename" . }}
+            claimName: {{ .Values.volumeClaimName | required "Value volumeClaimName is required" }}
       containers:
         - name: homeassistant
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

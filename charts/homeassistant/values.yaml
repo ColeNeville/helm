@@ -26,11 +26,7 @@ ingress:
   tls: []
 
 
-volumeClaim:
-  requests:
-    storage: 2.5Gi
-  volumeName: ""
-  storageClass: ""
+volumeClaimName: ""
 
 
 postgresql:
