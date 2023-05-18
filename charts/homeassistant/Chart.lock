@@ -1,6 +1,6 @@
 dependencies:
 - name: postgresql
-  repository: https://coleneville.github.io/helm
-  version: 1.1.0
-digest: sha256:8fec54d1a37e94930b89707c5bead688d8857c09afc136b4b6ad5d39b2bfa220
-generated: "2023-05-17T12:55:00.255088209-06:00"
+  repository: file://../postgresql
+  version: 1.2.0
+digest: sha256:21df7a02e7a70e7fa8b036462abb6236fcfc5d3e45789358df1b131fe46418cb
+generated: "2023-05-17T19:24:23.476623373-06:00"

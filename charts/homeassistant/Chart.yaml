@@ -26,4 +26,4 @@ appVersion: "latest"
 dependencies:
   - name: postgresql
     version: "1.2"
-    repository: https://coleneville.github.io/helm
+    repository: file://../postgresql
