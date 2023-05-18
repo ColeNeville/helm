@@ -161,6 +161,16 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: "15.3"
+    created: "2023-05-18T01:33:38.540025606Z"
+    description: A postgresql helm chart for personal use
+    digest: a8e3f118ea66ff01ebaeafbea6a2f9d62641b8127c17aba9e7c82c7056b09224
+    name: postgresql
+    type: application
+    urls:
+    - https://github.com/ColeNeville/helm/releases/download/postgresql-1.2.2/postgresql-1.2.2.tgz
+    version: 1.2.2
+  - apiVersion: v2
+    appVersion: "15.3"
     created: "2023-05-18T01:29:05.416371133Z"
     description: A postgresql helm chart for personal use
     digest: 4fe6f8db7afd4dd40f0edaae36367412c0d313f10e389ae287e1b56e1ee40508
@@ -209,4 +219,4 @@ entries:
     urls:
     - https://github.com/ColeNeville/helm/releases/download/postgresql-1.0.0/postgresql-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-18T01:30:14.080599474Z"
+generated: "2023-05-18T01:33:38.544251076Z"
