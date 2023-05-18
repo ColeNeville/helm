@@ -16,7 +16,7 @@ spec:
       labels: {{ include "deployment.selectorLabels" . | nindent 8 }}
     spec:
       volumes:
-        - name: postgres
+        - name: postgresql
           persistentVolumeClaim:
             claimName: {{ .Values.volumeClaimName | required "Value volumeClaimName is required" }}
       containers:
