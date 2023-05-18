@@ -16,3 +16,5 @@ postgres:
   user: postgres
   password: ""
   database: postgres
+
+volumeClaimName: ""

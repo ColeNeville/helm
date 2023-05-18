@@ -15,6 +15,10 @@ spec:
     metadata:
       labels: {{ include "deployment.selectorLabels" . | nindent 8 }}
     spec:
+      volumes:
+        - name: postgres
+          persistentVolumeClaim:
+            claimName: {{ .Values.volumeClaimName | required "Value volumeClaimName is required" }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -23,6 +27,10 @@ spec:
             - name: postgres
               containerPort: 5432
               protocol: TCP
+          volumeMounts:
+            - mountPoint: /var/lib/postgreql/data
+              name: postgresql
+              subPath: database
           env:
             - name: POSTGRES_USER
               value: {{ .Values.postgres.user }}
