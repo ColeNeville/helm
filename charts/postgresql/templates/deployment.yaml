@@ -28,7 +28,7 @@ spec:
               containerPort: 5432
               protocol: TCP
           volumeMounts:
-            - mountPoint: /var/lib/postgreql/data
+            - mountPath: /var/lib/postgreql/data
               name: postgresql
               subPath: database
           env:
