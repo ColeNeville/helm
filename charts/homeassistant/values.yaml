@@ -5,6 +5,11 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+gitImage:
+  repository: bitnami/git
+  pullPolicy: IfNotPresent
+  tag: ""
+
 pods:
   homeassistant:
     resources: {}
@@ -22,8 +27,7 @@ ingress:
         pathType: ImplementationSpecific
   tls: []
 
-github:
-  ssh_key: ""
+sshSecretName: ""
 
 volumeClaimName: ""
 
