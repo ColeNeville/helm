@@ -14,9 +14,6 @@ spec:
         - name: homeassistant
           persistentVolumeClaim:
             claimName: {{ .Values.volumeClaimName | required "Value volumeClaimName is required" }}
-        - name: ssh
-          secret:
-            secret_name: {{ .values.sshSecretName | required "Value sshSecretName is required" }}
       containers:
         - name: homeassistant
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
