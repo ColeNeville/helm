@@ -14,7 +14,8 @@ service:
 
 postgres:
   user: postgres
-  password: ""
+  passwordSecretName: ""
+  passwordSecretKey: ""
   database: postgres
 
 volumeClaimName: ""
