@@ -1,4 +1,4 @@
-# Cole Neville's Helm Repository
+# Personal Helm Repository
 
 ## Adding the Repository
 
@@ -7,3 +7,9 @@ The repository is hosted from the `gh-pages` branch to host the taged releases i
 ```bash
 helm repo add https://coleneville.github.io/helm
 ```
+
+## Charts
+
+- Homeassistant
+- Postgresql
+- Mosquitto
