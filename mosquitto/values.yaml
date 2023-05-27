@@ -13,9 +13,4 @@ service:
   port: 1883
 
 mosquitto:
-  mqttUser: mosquitto
-  mqttPasswordSecretName: ""
-  mqttPasswordSecretKey: ""
-
-
-volumeClaimName: ""
+  configSecretName: ""

@@ -38,7 +38,5 @@ postgresql:
 
 mosquitto:
   mosquitto:
-    mqttUser: homeassistant
-    mqttPasswordSecretName: ""
-    mqttPasswordSecretKey: ""
+    configSecretName: ""
 

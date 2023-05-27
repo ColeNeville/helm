@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chart.fullname" . }}
+  labels: {{ include "chart.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels: {{ include "deployment.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: {{ include "deployment.selectorLabels" . | nindent 8 }}
+    spec:
+      volumes:
+        - name: mosquitto-config
+          secret:
+            secretName: {{ .Values.mosquitto.configSecretName | required "Value mqtt.configSecretName is required" }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: mosquitto
+              containerPort: 1883
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /mosquitto/config
+              name: mosquitto-config
+          resources: {{ toYaml .Values.pods.postgres.resources | nindent 12 }}
