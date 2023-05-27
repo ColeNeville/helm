@@ -1,61 +1,56 @@
+{{- define "deployment.selectorLabels" -}}
+app.kubernetes.io/name: {{ .Chart.Name }}
+app.kubernetes.io/instance: {{ printf "%s-%s" .Release.Name "postgres" }}
+{{- end -}}
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "mosquitto.fullname" . }}
-  labels:
-    {{- include "mosquitto.labels" . | nindent 4 }}
+  name: {{ include "chart.fullname" . }}
+  labels: {{ include "chart.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
-    matchLabels:
-      {{- include "mosquitto.selectorLabels" . | nindent 6 }}
+    matchLabels: {{ include "deployment.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      labels:
-        {{- include "mosquitto.selectorLabels" . | nindent 8 }}
+      labels: {{ include "deployment.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      serviceAccountName: {{ include "mosquitto.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: mosquitto
+          persistentVolumeClaim:
+            claimName: {{ .Values.volumeClaimName | required "Value volumeClaimName is required" }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
+            - name: mosquitto
+              containerPort: 1883
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+          volumeMounts:
+            - mountPath: /mosquitto/config
+              name: mosquitto
+              subPath: config
+          resources: {{ toYaml .Values.pods.postgres.resources | nindent 12 }}
+      initContainers:
+        - name: {{ .Chart.Name }}-init
+          image: alpine
+          volumeMounts:
+            - mountPath: /mosquitto/config
+              name: mosquitto
+              subPath: config
+          env:
+            - name: MOSQUITTO_USER
+              value: {{ .Values.mqtt.user }}
+            - name: MOSQUITTO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.mqtt.passwordSecretName | required "Value mqtt.passwordSecretName is required" }}
+                  key: {{ .Values.mqtt.passwordSecretKey | required "Value mqtt.passwordSecretKey is required" }}
+          command: ["/bin/sh"]
+          args: ["-c", "
+            echo "" > /mosquitto/config/mosquitto.conf
+            exit 1
+          "]
+          
+
