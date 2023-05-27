@@ -35,3 +35,10 @@ postgresql:
   postgres:
     user: homeassistant
     database: homeassistant
+
+mosquitto:
+  mosquitto:
+    mqttUser: homeassistant
+    mqttPasswordSecretName: ""
+    mqttPasswordSecretKey: ""
+

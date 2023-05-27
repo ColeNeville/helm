@@ -2,5 +2,8 @@ dependencies:
 - name: postgresql
   repository: file://../postgresql
   version: 1.2.3
-digest: sha256:fe78d97c8b2dd3217f33233d3a2ae1159063eda73afeef93ab53bae55b7afcbd
-generated: "2023-05-24T17:27:52.576382462-06:00"
+- name: mosquitto
+  repository: file://../mosquitto
+  version: 1.1.1
+digest: sha256:8eac42cf3dccb8b592887d116f72a292ebbeda5cf2445ca942f160ec14da0d26
+generated: "2023-05-26T19:22:01.212065001-06:00"
