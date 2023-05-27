@@ -13,7 +13,7 @@ spec:
       volumes:
         - name: homeassistant
           persistentVolumeClaim:
-            claimName: {{ .Values.volumeClaimName | required "Value volumeClaimName is required" }}
+            claimName: {{ .Values.externalResources.volumeClaimName | required "Value externalResources.volumeClaimName is required" }}
       containers:
         - name: homeassistant
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -26,4 +26,4 @@ spec:
             - mountPath: /config
               name: homeassistant
               subPath: config
-          resources: {{ toYaml .Values.pods.homeassistant.resources | nindent 12 }}
+          resources: {{ toYaml .Values.pod.resources | nindent 12 }}

@@ -4,12 +4,8 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-pods:
-  homeassistant:
-    volume:
-      claimName: ""
-    
-    resources: {}
+pod:
+  resources: {}
 
 service:
   type: ClusterIP
@@ -25,6 +21,9 @@ ingress:
         pathType: ImplementationSpecific
   
   tls: []
+
+externalResources:
+  volumeClaimName: ""
 
 postgresql:
   image:
