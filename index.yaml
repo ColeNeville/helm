@@ -206,6 +206,16 @@ entries:
   mosquitto:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-05-27T01:21:21.889293601Z"
+    description: A mosquitto helm chart for personal use
+    digest: e175da6fb7d4b3d1e2c7a60398bc5a3d1d98d9928dccde8b87da0c0404f5c444
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/ColeNeville/helm/releases/download/mosquitto-1.1.1/mosquitto-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-05-27T01:17:15.319016566Z"
     description: A mosquitto helm chart for personal use
     digest: 091b3befc9e928cda127080f275de32b5b11d1f62bb7649443250f5af0b138c0
@@ -295,4 +305,4 @@ entries:
     urls:
     - https://github.com/ColeNeville/helm/releases/download/postgresql-1.0.0/postgresql-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-27T01:17:15.319068567Z"
+generated: "2023-05-27T01:21:21.889335501Z"
