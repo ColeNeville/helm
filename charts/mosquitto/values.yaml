@@ -12,10 +12,10 @@ service:
   type: "ClusterIP"
   port: 1883
 
-mqtt:
-  user: mosquitto
-  passwordSecretName: ""
-  passwordSecretKey: ""
+mosquitto:
+  mqttUser: mosquitto
+  mqttPasswordSecretName: ""
+  mqttPasswordSecretKey: ""
 
 
 volumeClaimName: ""

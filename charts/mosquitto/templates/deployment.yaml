@@ -41,12 +41,12 @@ spec:
               subPath: config
           env:
             - name: MOSQUITTO_USER
-              value: {{ .Values.mqtt.user }}
+              value: {{ .Values.mosquitto.mqttUser }}
             - name: MOSQUITTO_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mqtt.passwordSecretName | required "Value mqtt.passwordSecretName is required" }}
-                  key: {{ .Values.mqtt.passwordSecretKey | required "Value mqtt.passwordSecretKey is required" }}
+                  name: {{ .Values.mosquitto.mqttPasswordSecretName | required "Value mosquitto.mqttPasswordSecretName is required" }}
+                  key: {{ .Values.mosquitto.mqttPasswordSecretKey | required "Value mosquitto.mqttPasswordSecretKey is required" }}
           command: ["/bin/sh"]
           args: ["-c", "
             echo "" > /mosquitto/config/mosquitto.conf
