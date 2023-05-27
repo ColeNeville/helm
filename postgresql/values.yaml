@@ -4,18 +4,22 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-pods:
-  postgres:
-    resources: {}
+
+pod:
+  resources: {}
+
 
 service:
   type: "LoadBalancer"
   port: 5432
 
-postgres:
-  user: postgres
-  passwordSecretName: ""
-  passwordSecretKey: ""
-  database: postgres
 
-volumeClaimName: ""
+postgresql:
+  user: postgresql
+  database: postgresql
+  passwordSecretKey: POSTGRES_PASSWORD
+
+
+externalResources:
+  envSecretName: ""
+  volumeClaimName: ""

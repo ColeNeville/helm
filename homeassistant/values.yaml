@@ -1,17 +1,14 @@
-
 image:
   repository: homeassistant/home-assistant
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-gitImage:
-  repository: bitnami/git
-  pullPolicy: IfNotPresent
-  tag: ""
-
 pods:
   homeassistant:
+    volume:
+      claimName: ""
+    
     resources: {}
 
 service:
@@ -20,23 +17,33 @@ service:
 
 ingress:
   enabled: false
+
   hosts:
     - host: homeassistant.local
       path:
         path: /
         pathType: ImplementationSpecific
+  
   tls: []
 
-sshSecretName: ""
-
-volumeClaimName: ""
-
 postgresql:
-  postgres:
+  image:
+    tag: "15.3"
+
+  pod:
+    resources: {}
+
+  postgresql:
     user: homeassistant
     database: homeassistant
+  
+  externalResources:
+    envSecretName: ""
+    volumeClaimName: ""
 
 mosquitto:
+  image:
+    tag: "2.0.15"
+
   mosquitto:
     configSecretName: ""
-
