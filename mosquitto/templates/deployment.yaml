@@ -12,8 +12,8 @@ spec:
     spec:
       volumes:
         - name: mosquitto-config
-          secret:
-            secretName: {{ .Values.mosquitto.configSecretName | required "Value mqtt.configSecretName is required" }}
+          configMap:
+            name: {{ .Values.externalResources.configMapName | required "Value externalResources.configMapName is required" }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

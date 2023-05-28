@@ -44,5 +44,5 @@ mosquitto:
   image:
     tag: "2.0.15"
 
-  mosquitto:
-    configSecretName: ""
+  externalResources:
+    configMapName: ""

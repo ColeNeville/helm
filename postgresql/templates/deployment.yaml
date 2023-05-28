@@ -35,6 +35,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.externalResources.envSecretName | required "Value externalResources.envSecretName is required" }}
-                  key: {{ .Values.postgesql.passwordSecretKey }}
+                  key: {{ .Values.postgresql.passwordSecretKey }}
                   optional: false
           resources: {{ toYaml .resources | nindent 12 }}
