@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "chart.basename" . }}
-  labels: {{ include "chart.labels" . | nindent 4 }}
+  name: {{ include "homeassistant.basename" . }}
+  labels: {{ include "homeassistant.labels" . | nindent 4 }}
 spec:
   selector:
-    matchLabels: {{ include "deployment.selectorLabels" . | nindent 6 }}
+    matchLabels: {{ include "homeassistant.deployment.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      labels: {{ include "deployment.selectorLabels" . | nindent 8 }}
+      labels: {{ include "homeassistant.deployment.selectorLabels" . | nindent 8 }}
     spec:
       volumes:
         - name: homeassistant

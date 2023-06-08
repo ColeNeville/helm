@@ -9,7 +9,7 @@ pods:
     resources: {}
 
 service:
-  type: "ClusterIP"
+  type: "LoadBalancer"
   port: 1883
 
 externalResources:

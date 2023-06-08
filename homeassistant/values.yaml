@@ -1,48 +1,23 @@
-image:
-  repository: homeassistant/home-assistant
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+container:
+  image: homeassistant/home-assistant
   tag: ""
 
-pod:
-  resources: {}
+persistantVolumeClaim:
+  create: false
 
 service:
+  create: true
   type: ClusterIP
   port: 8123
 
 ingress:
-  enabled: false
+  create: true
 
-  hosts:
-    - host: homeassistant.local
-      path:
-        path: /
-        pathType: ImplementationSpecific
-  
+  hosts: []
   tls: []
 
+certificate:
+  enabled: false
+
 externalResources:
-  volumeClaimName: ""
-
-postgresql:
-  image:
-    tag: "15.3"
-
-  pod:
-    resources: {}
-
-  postgresql:
-    user: homeassistant
-    database: homeassistant
-  
-  externalResources:
-    envSecretName: ""
-    volumeClaimName: ""
-
-mosquitto:
-  image:
-    tag: "2.0.15"
-
-  externalResources:
-    configMapName: ""
+  persistantVolumeClaimName: ""

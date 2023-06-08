@@ -22,11 +22,3 @@ version: 1.0.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "latest"
-
-dependencies:
-  - name: postgresql
-    version: "1.0"
-    repository: file://../postgresql
-  - name: mosquitto
-    version: "1.0"
-    repository: file://../mosquitto
